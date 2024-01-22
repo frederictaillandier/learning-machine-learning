@@ -44,8 +44,8 @@ fn draw_cross(ui: &bevy_egui::egui::Ui, p: &crate::Point, r: f32) {
 
 pub fn ui(
     mut contexts: bevy_egui::EguiContexts,
-    query: Query<&mut Point>,
-    model: bevy::ecs::system::ResMut<crate::Model>,
+    query: Query<&Point>,
+    model: bevy::ecs::system::Res<crate::Model>,
 ) {
     let ctx = contexts.ctx_mut();
     bevy_egui::egui::panel::CentralPanel::default().show(ctx, |ui| {
