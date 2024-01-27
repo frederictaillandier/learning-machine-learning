@@ -15,8 +15,8 @@ fn compute_gradient(query: Query<&Point>, model: &Model) -> (f32, f32) {
         let f_wb = model.w * p.x + model.b;
         let d_w = (f_wb - p.y) * p.x;
         let d_b = f_wb - p.y;
-        w += d_w;
         b += d_b;
+        w += d_w;
     }
     (w / m, b / m)
 }
@@ -33,5 +33,10 @@ fn compute_cost(query: Query<&Point>, model: &mut Model) -> f32 {
 }
 
 pub fn ml(query: Query<&Point>, mut model: bevy::ecs::system::ResMut<crate::Model>) {
-    let grad = compute_gradient(query, &mut model);
+    let grad = compute_gradient(query, &model);
+    let alpha = 0.0000001;
+    let alphab = 0.01;
+    model.w -= grad.0 * alpha;
+    model.b -= grad.1 * alphab;
+    println!("w: {}, b: {}", model.w, model.b);
 }

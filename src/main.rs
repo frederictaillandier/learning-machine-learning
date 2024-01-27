@@ -17,9 +17,12 @@ pub struct Model {
 }
 
 fn startup(mut commands: bevy::ecs::system::Commands) {
-    commands.spawn(Point { x: 10.0, y: 10.0 });
-    commands.spawn(Point { x: 100.0, y: 100.0 });
-    commands.insert_resource(Model { w: 1.0, b: 100.0 });
+    commands.spawn(Point { x: 10.0, y: 110.0 });
+    commands.spawn(Point { x: 50.0, y: 150.0 });
+    commands.spawn(Point { x: 100.0, y: 200.0 });
+    commands.spawn(Point { x: 200.0, y: 300.0 });
+
+    commands.insert_resource(Model { w: 1.0, b: 10.0 });
 }
 
 fn main() {
